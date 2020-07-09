@@ -1,7 +1,7 @@
 #!/bin/sh
 #|-*- mode:lisp -*-|#
 #|
-exec ros -Q -- $0 "$@"
+exec ros -Q -L sbcl-bin -m remote -- $0 "$@"
 |#
 (progn ;;init forms
   (setf *load-verbose* nil *load-print* nil
