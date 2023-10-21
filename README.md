@@ -5,10 +5,10 @@ a Common Lisp helper script allowing easy manipulation of remote computers runni
 
 ## Usage
 ```
-usage: remote.py [--help] [-n] [-L] [-h HOST] [-s ADDR] [-p PORT] [-u USER] [-w] [-m MAC] [-P PORT]
-                 [-d SECONDS] [-o OP_TYPE] [--cmd CMD [CMD ...]] [-t TUNNEL_ARG] [-l PATH] [-r PATH]
-                 [--ssh-opts [OPTIONS ...]] [--sshfs-opts [OPTIONS ...]]
-                 [--rsync-opts [OPTIONS ...]]
+usage: remote.py [--help] [-n]
+                 [-L] [-h HOST] [-s ADDR] [-p PORT] [-u USER] [-w] [-m MAC] [-P PORT] [-d SECONDS]
+                 [-o OP_TYPE] [--cmd CMD [CMD ...]] [-t TUNNEL_ARG] [-l PATH] [-r PATH]
+                 [--ssh-opt [OPTION ...]] [--sshfs-opt [OPTION ...]] [--rsync-opt [OPTION ...]]
 
 Remote host control
 
@@ -42,9 +42,9 @@ operation paths:
   -r PATH, --rpath PATH               remote path
 
 operation options:
-  --ssh-opts [OPTIONS ...]            ssh options
-  --sshfs-opts [OPTIONS ...]          sshfs options
-  --rsync-opts [OPTIONS ...]          rsync options
+  --ssh-opt [OPTION ...]              ssh option(s)
+  --sshfs-opt [OPTION ...]            sshfs option(s)
+  --rsync-opt [OPTION ...]            rsync option(s)
 ```
 
 ## Advanced usage
