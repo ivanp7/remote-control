@@ -31,6 +31,8 @@ OP_SSHFS = 'mount'
 OP_DOWNLOAD = 'download'
 OP_UPLOAD = 'upload'
 
+OPERATIONS = [OP_URL, OP_STATUS, OP_SSH, OP_TUNNEL, OP_RTUNNEL, OP_SSHFS, OP_DOWNLOAD, OP_UPLOAD]
+
 
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
@@ -132,9 +134,8 @@ def parse_args() -> dict:
 
     args_operation = arg_parser.add_argument_group(title="operation")
 
-    operations = [OP_URL, OP_STATUS, OP_SSH, OP_TUNNEL, OP_RTUNNEL, OP_SSHFS, OP_DOWNLOAD, OP_UPLOAD]
-    args_operation.add_argument('-o', '--op', choices=operations, dest='operation',
-                                metavar="OP_TYPE", help=f"operation type ({', '.join(operations)})")
+    args_operation.add_argument('-o', '--op', choices=OPERATIONS, dest='operation',
+                                metavar="OP_TYPE", help=f"operation type ({', '.join(OPERATIONS)})")
 
     args_operation.add_argument('--cmd', nargs='+', default=[], dest='ssh_command',
                                 metavar="CMD", help="ssh command to execute remotely")
@@ -150,12 +151,12 @@ def parse_args() -> dict:
 
     args_opts = arg_parser.add_argument_group(title="operation options")
 
-    args_opts.add_argument('--ssh-opts', action='extend', nargs='*', default=[], dest='ssh_opts',
-                           metavar="OPTIONS", help="ssh options")
-    args_opts.add_argument('--sshfs-opts', action='extend', nargs='*', default=[], dest='sshfs_opts',
-                           metavar="OPTIONS", help="sshfs options")
-    args_opts.add_argument('--rsync-opts', action='extend', nargs='*', default=[], dest='rsync_opts',
-                           metavar="OPTIONS", help="rsync options")
+    args_opts.add_argument('--ssh-opt', action='extend', nargs='*', default=[], dest='ssh_opts',
+                           metavar="OPTION", help="ssh option(s)")
+    args_opts.add_argument('--sshfs-opt', action='extend', nargs='*', default=[], dest='sshfs_opts',
+                           metavar="OPTION", help="sshfs option(s)")
+    args_opts.add_argument('--rsync-opt', action='extend', nargs='*', default=[], dest='rsync_opts',
+                           metavar="OPTION", help="rsync option(s)")
 
     return arg_parser.parse_args()
 
