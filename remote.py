@@ -226,10 +226,11 @@ def generate_host_url(user: str, address: str, port: int, prefix: bool=False) ->
 def execute_command(command: list[str], dry_run: bool=False) -> int:
     """Execute generic command.
     """
+    cmdstr = " ".join([(f"\"{arg}\"" if " " in arg else arg) for arg in command])
     if dry_run:
-        print(" ".join(command))
+        print(cmdstr)
     else:
-        eprint("$ " + " ".join(command))
+        eprint("$ " + cmdstr)
         eprint()
 
     return subprocess.run(command).returncode if not dry_run else 0
