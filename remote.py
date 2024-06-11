@@ -42,7 +42,7 @@ def host_addr_str(value: str) -> str:
     Raise ValueError in case of invalid value.
     Return the unchanged value.
     """
-    if re.fullmatch('^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$', value):
+    if re.fullmatch('^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\\-]*[a-zA-Z0-9])\\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\\-]*[A-Za-z0-9])$', value):
         return value
     else:
         raise ValueError
@@ -52,7 +52,7 @@ def user_name_str(value: str) -> str:
     Raise ValueError in case of invalid value.
     Return the unchanged value.
     """
-    if re.fullmatch('^[a-z_]([a-z0-9_-]{0,31}|[a-z0-9_-]{0,30}\$)$', value):
+    if re.fullmatch('^[a-z_]([a-z0-9_-]{0,31}|[a-z0-9_-]{0,30}\\$)$', value):
         return value
     else:
         raise ValueError
