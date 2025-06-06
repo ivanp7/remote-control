@@ -278,6 +278,8 @@ def sshfs_mount(address: str, user: str=None, port: int=None, local_path: str=No
         target += remote_path
 
     command = ['sshfs', target, local_path, *opts]
+    if port is not None:
+        command += ['-p', str(port)]
 
     return execute_command(command, dry_run)
 
